@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaborExpress - Contacto</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Tu archivo CSS si es necesario -->
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-yellow-600 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-white text-2xl font-bold">SaborExpress</a>
+            <div class="space-x-4">
+                <a href="texto.html" class="text-white hover:text-gray-200">Inicio</a>
+                <a href="sobremi.html" class="text-white hover:text-gray-200">Sobre Nosotros</a>
+                <a href="productos.html" class="text-white hover:text-gray-200">Menú</a>
+                <a href="noticia.html" class="text-white hover:text-gray-200">Noticias</a>
+                <a href="contacto.html" class="text-white hover:text-gray-200">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+<section class="py-16 bg-gray-100">
+    <div class="container mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-8">Contáctanos</h1>
+        <div class="flex justify-center">
+            <form id="contact-form" class="w-full max-w-lg">
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="relative">
+                        <input type="text" name="name" placeholder="Nombre" class="p-3 border border-gray-300 rounded-lg w-full" required>
+                        <div id="name-error" class="text-red-500 text-sm mt-2 hidden">Por favor, ingresa un nombre válido.</div>
+                    </div>
+                    <div class="relative">
+                        <input type="email" name="email" placeholder="Email" class="p-3 border border-gray-300 rounded-lg w-full" required>
+                        <div id="email-error" class="text-red-500 text-sm mt-2 hidden">Por favor, ingresa un correo electrónico válido.</div>
+                    </div>
+                    <textarea name="message" placeholder="Mensaje" class="p-3 border border-gray-300 rounded-lg w-full" rows="4" required></textarea>
+                    <button type="submit" class="bg-yellow-500 text-gray-800 px-6 py-3 rounded-lg text-lg hover:bg-yellow-400">Enviar Mensaje</button>
+                </div>
+            </form>
+        </div>
+        <div id="response-message" class="hidden text-center mt-8 text-green-600 text-xl">
+            Gracias por comentar. ¡Nos pondremos en contacto contigo pronto!
+        </div>
+</section>
+
+<script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Previene el envío del formulario
+
+        // Limpiar mensajes de error previos
+        document.getElementById('name-error').classList.add('hidden');
+        document.getElementById('email-error').classList.add('hidden');
+
+        let hasError = false;
+
+        // Validar nombre
+        const nameInput = this.querySelector('input[name="name"]');
+        if (nameInput.value.trim() === '') {
+            document.getElementById('name-error').classList.remove('hidden');
+            hasError = true;
+        }
+
+        // Validar email
+        const emailInput = this.querySelector('input[name="email"]');
+        if (!emailInput.checkValidity()) {
+            document.getElementById('email-error').classList.remove('hidden');
+            hasError = true;
+        }
+
+        if (!hasError) {
+            // Ocultar el formulario y mostrar el mensaje de respuesta
+            this.style.display = 'none';
+            document.getElementById('response-message').classList.remove('hidden');
+        }
+    });
+</script>
+
+            <!-- Social Media Links -->
+            <div class="mt-8 text-center">
+                <a href="https://facebook.com" class="text-yellow-600 hover:underline mx-2">Facebook</a>
+                <a href="https://twitter.com" class="text-yellow-600 hover:underline mx-2">Twitter</a>
+                <a href="https://instagram.com" class="text-yellow-600 hover:underline mx-2">Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-yellow-600 p-4 text-white text-center">
+        <p>&copy; 2024 SaborExpress. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
